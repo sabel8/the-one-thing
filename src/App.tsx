@@ -1,26 +1,20 @@
-import React from 'react';
-import logo from './logo.svg';
 import './App.css';
+import { FocusQuestion } from './components/FocusQuestion';
+import { PomodoroTimer } from './components/PomodoroTimer';
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+	return (
+		<div className="App">
+			<PomodoroTimer
+				workingMinutes={9}
+				restingMinutes={7}
+				cycles={2}
+				secondsLeft={30}
+				isWorking={false}
+			/>
+			<FocusQuestion />
+		</div>
+	);
 }
 
 export default App;
