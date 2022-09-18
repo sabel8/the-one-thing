@@ -1,11 +1,14 @@
 import { createTheme, lighten, Theme } from '@mui/material';
 import { makeAutoObservable } from 'mobx';
 
+const PRIMARY_COLOR_CACHE_KEY: string = 'primaryColor';
+
 export class UIStore {
 	showSettingsDialog: boolean = false;
-	primaryColor: string = '#3f51b5';
+	primaryColor: string;
 
 	constructor() {
+		this.primaryColor = localStorage[PRIMARY_COLOR_CACHE_KEY] || '#3f51b5';
 		makeAutoObservable(this);
 	}
 
@@ -24,6 +27,7 @@ export class UIStore {
 
 	setPrimaryColor(color: string) {
 		this.primaryColor = color;
+		localStorage[PRIMARY_COLOR_CACHE_KEY] = color;
 	}
 
 	setSettingsDialogVisibility = (SettingsDialog: boolean) => {
