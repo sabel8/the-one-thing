@@ -119,7 +119,16 @@ export class PomodoroTimer extends React.Component<IProps> {
 					</Grid>
 					{this.pomodoroTimerStore.isStarted && this.pomodoroTimerStore.gifUrl !== '' && (
 						<Grid item xs={12} sx={{ textAlign: 'center' }}>
-							<img src={this.pomodoroTimerStore.gifUrl} alt="giphy" style={{width: '75%'}} />
+							<img
+								src={this.pomodoroTimerStore.gifUrl}
+								alt="giphy"
+								style={{
+									maxHeight: '30vh',
+									maxWidth: '75%',
+									height: 'auto',
+									width: 'auto',
+								}}
+							/>
 						</Grid>
 					)}
 				</Grid>
