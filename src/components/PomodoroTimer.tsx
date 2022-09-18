@@ -61,7 +61,7 @@ export class PomodoroTimer extends React.Component<IProps> {
 
 	onStartPause() {
 		if (this.pomodoroTimerStore.isStarted) clearInterval(this.currentTimer);
-		else this.currentTimer = setInterval(() => this.decrementSecond(), 100);
+		else this.currentTimer = setInterval(() => this.decrementSecond(), 1000);
 		this.pomodoroTimerStore.setIsStarted(!this.pomodoroTimerStore.isStarted);
 	}
 
@@ -117,6 +117,11 @@ export class PomodoroTimer extends React.Component<IProps> {
 							Cycles done: {this.pomodoroTimerStore.cycles}
 						</Typography>
 					</Grid>
+					{this.pomodoroTimerStore.isStarted && this.pomodoroTimerStore.gifUrl !== '' && (
+						<Grid item xs={12} sx={{ textAlign: 'center' }}>
+							<img src={this.pomodoroTimerStore.gifUrl} alt="giphy" style={{width: '75%'}} />
+						</Grid>
+					)}
 				</Grid>
 			</Card>
 		);

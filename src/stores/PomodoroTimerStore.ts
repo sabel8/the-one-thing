@@ -1,4 +1,6 @@
+import { GIFObject } from 'giphy-api';
 import { makeAutoObservable } from 'mobx';
+import GiphyService from '../services/GiphyService';
 
 export class PomodoroTimerStore {
 	isWorking: boolean;
@@ -8,9 +10,10 @@ export class PomodoroTimerStore {
 	workingMinutes: number;
 	shortRestingMinutes: number;
 	longRestingMinutes: number;
+	gifUrl: string;
 
 	constructor() {
-		//load from cache
+		//todo: load from cache
 		this.isWorking = true;
 		this.isStarted = false;
 		this.cycles = 0;
@@ -19,6 +22,7 @@ export class PomodoroTimerStore {
 		this.longRestingMinutes = 2;
 		this.secondsLeft = (this.isWorking ? this.workingMinutes : this.shortRestingMinutes) * 60;
 		this.secondsLeft = 5;
+		this.gifUrl = '';
 		makeAutoObservable(this);
 	}
 
@@ -29,6 +33,7 @@ export class PomodoroTimerStore {
 
 	setIsStarted = (isStarted: boolean) => {
 		this.isStarted = isStarted;
+		if (isStarted) this.refreshGif();
 	};
 
 	setSecondsLeft = (secondsLeft: number) => {
@@ -100,5 +105,10 @@ export class PomodoroTimerStore {
 		return 0;
 	}
 
+	*refreshGif() {
+		this.gifUrl = '';
+		const gif: GIFObject = yield GiphyService.get(this.isWorking ? 'Working' : 'sleep');
+		this.gifUrl = gif.images.original.url;
+	}
 	//#endregion
 }
