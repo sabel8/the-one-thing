@@ -1,11 +1,12 @@
 import React from 'react';
-import Paper from '@mui/material/Paper';
-import CircularProgress from '@mui/material/CircularProgress';
+import Card from '@mui/material/Card';
+import Typography from '@mui/material/Typography';
+import CircularProgress, { circularProgressClasses } from '@mui/material/CircularProgress';
 import { IPomodoroTimer } from '../models/IPomodoroProps';
 import { MainStore } from '../stores/MainStore';
 import { inject, observer } from 'mobx-react';
 import { PomodoroTimerStore } from '../stores/PomodoroTimerStore';
-import { Fab } from '@mui/material';
+import { Box, Fab, Grid } from '@mui/material';
 import PlayIcon from '@mui/icons-material/PlayArrow';
 import PauseIcon from '@mui/icons-material/Pause';
 
@@ -65,10 +66,6 @@ export class PomodoroTimer extends React.Component<IProps> {
 	}
 
 	private decrementSecond() {
-		console.log(
-			'🚀 ~ file: PomodoroTimer.tsx ~ line 26 ~ PomodoroTimer ~ decrementSecond ~ this.pomodoroTimerStore.secondsLeft',
-			this.pomodoroTimerStore.secondsLeft
-		);
 		if (this.pomodoroTimerStore.secondsLeft <= 1) this.switchMode();
 		else this.pomodoroTimerStore.decrementSecondsLeft();
 	}
@@ -81,19 +78,47 @@ export class PomodoroTimer extends React.Component<IProps> {
 
 	render() {
 		return (
-			<Paper>
-				<p>{this.pomodoroTimerStore.isWorking ? 'WORKING' : 'RESTING'}</p>
-				<p>{this.pomodoroTimerStore.timeLeft}</p>
-				<p>Cycles: {this.pomodoroTimerStore.cycles}</p>
-				<Fab color="primary" onClick={() => this.onStartPause()}>
-					{this.pomodoroTimerStore.isStarted ? <PauseIcon /> : <PlayIcon />}
-				</Fab>
-				<br />
-				<CircularProgress
-					variant="determinate"
-					value={this.pomodoroTimerStore.doneInPercentages}
-				/>
-			</Paper>
+			<Card sx={{ padding: 2 }}>
+				<Grid container spacing={2} sx={{ alignItems: 'center' }}>
+					<Grid item xs={6} sm={4} sx={{ textAlign: 'center' }}>
+						<Typography variant="h3">{this.pomodoroTimerStore.timeLeft}</Typography>
+					</Grid>
+					<Grid item xs={6} sm={4} sx={{ textAlign: 'center' }}>
+						<Box sx={{ position: 'relative', display: 'inline-flex' }}>
+							<CircularProgress
+								variant="determinate"
+								size={80}
+								sx={{
+									[`& .${circularProgressClasses.circle}`]: { strokeLinecap: 'round' },
+								}}
+								value={this.pomodoroTimerStore.doneInPercentages}
+							/>
+							<Box
+								sx={{
+									top: 0,
+									left: 0,
+									bottom: 0,
+									right: 0,
+									position: 'absolute',
+									display: 'flex',
+									alignItems: 'center',
+									justifyContent: 'center',
+								}}
+							>
+								<Fab color="primary" onClick={() => this.onStartPause()}>
+									{this.pomodoroTimerStore.isStarted ? <PauseIcon /> : <PlayIcon />}
+								</Fab>
+							</Box>
+						</Box>
+					</Grid>
+					<Grid item xs={12} sm={4} sx={{ textAlign: 'center' }}>
+						<Typography variant="h6">{this.pomodoroTimerStore.currentState}</Typography>
+						<Typography variant="body1">
+							Cycles done: {this.pomodoroTimerStore.cycles}
+						</Typography>
+					</Grid>
+				</Grid>
+			</Card>
 		);
 	}
 }

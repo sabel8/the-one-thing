@@ -21,7 +21,6 @@ class App extends React.Component {
 	render() {
 		return (
 			<Provider {...this.stores}>
-				
 				<Home />
 			</Provider>
 		);

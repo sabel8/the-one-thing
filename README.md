@@ -8,6 +8,8 @@ alul settings gomb, megnyomására dialog ahol color picker és font picker van
 
 chime sound from: https://pixabay.com/sound-effects/search/chime/
 
+work, short, work, short, work, long
+
 ## Available Scripts
 
 In the project directory, you can run:
