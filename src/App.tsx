@@ -1,20 +1,31 @@
-import './App.css';
-import { FocusQuestion } from './components/FocusQuestion';
-import { PomodoroTimer } from './components/PomodoroTimer';
+import React from 'react';
+import { Provider } from 'mobx-react';
+import { MainStore } from './stores/MainStore';
+import { Home } from './Home';
 
-function App() {
-	return (
-		<div className="App">
-			<PomodoroTimer
-				workingMinutes={9}
-				restingMinutes={7}
-				cycles={2}
-				secondsLeft={30}
-				isWorking={false}
-			/>
-			<FocusQuestion />
-		</div>
-	);
+interface IStores {
+	MainStore: MainStore;
+}
+
+class App extends React.Component {
+	private stores: IStores;
+
+	constructor(props: any) {
+		super(props);
+
+		this.stores = {
+			MainStore: new MainStore(),
+		};
+	}
+
+	render() {
+		return (
+			<Provider {...this.stores}>
+				
+				<Home />
+			</Provider>
+		);
+	}
 }
 
 export default App;
