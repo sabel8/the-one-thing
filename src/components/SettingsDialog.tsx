@@ -2,7 +2,8 @@ import React from 'react';
 import { inject, observer } from 'mobx-react';
 import { MainStore } from '../stores/MainStore';
 import { ColorPicker } from './ColorPicker';
-import { Dialog, DialogTitle } from '@mui/material';
+import { Dialog, DialogTitle, Stack } from '@mui/material';
+import { FontPicker } from './FontPicker';
 
 interface IProps {
 	MainStore?: MainStore;
@@ -18,9 +19,10 @@ export class SettingsDialog extends React.Component<IProps, {}> {
 				open={this.props!.MainStore!.uiStore.showSettingsDialog}
 			>
 				<DialogTitle>Settings</DialogTitle>
-				<ColorPicker />
-				<br />
-				fontpicker...
+				<Stack spacing={3} sx={{ padding: 2 }}>
+					<ColorPicker />
+					<FontPicker />
+				</Stack>
 			</Dialog>
 		);
 	}

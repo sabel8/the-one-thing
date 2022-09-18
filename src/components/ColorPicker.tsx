@@ -1,7 +1,6 @@
 import React from 'react';
-import Paper from '@mui/material/Paper';
 import { CirclePicker } from 'react-color';
-import { Box } from '@mui/material';
+import { Paper, Typography } from '@mui/material';
 import { inject, observer } from 'mobx-react';
 import { MainStore } from '../stores/MainStore';
 
@@ -15,11 +14,14 @@ interface IState {}
 export class ColorPicker extends React.Component<IProps, IState> {
 	render() {
 		return (
-			<Box>
+			<Paper variant="outlined" sx={{ padding: 2 }}>
+				<Typography variant="subtitle1" sx={{ marginBottom: 2 }}>
+					Color
+				</Typography>
 				<CirclePicker
 					onChange={(color) => this.props.MainStore?.uiStore.setPrimaryColor(color.hex)}
 				/>
-			</Box>
+			</Paper>
 		);
 	}
 }
