@@ -1,6 +1,6 @@
 import React from 'react';
 import { Provider } from 'mobx-react';
-import { Home } from './Home';
+import { Home } from './components/Home';
 import { PomodoroTimerStore } from './stores/PomodoroTimerStore';
 import { FocusQuestionStore } from './stores/FocusQuestionStore';
 import { UIStore } from './stores/UIStore';

@@ -1,13 +1,13 @@
 import Container from '@mui/material/Container';
 import React from 'react';
 import { inject, observer } from 'mobx-react';
-import { SettingsDialog } from './components/Settings/SettingsDialog';
+import { SettingsDialog } from './Settings/SettingsDialog';
 import { ThemeProvider } from '@emotion/react';
 import { CssBaseline, Stack } from '@mui/material';
-import { Header } from './components/Header';
-import { UIStore } from './stores/UIStore';
-import { FocusQuestion } from './components/FocusQuestion/FocusQuestion';
-import { PomodoroTimer } from './components/PomodoroTimer/PomodoroTimer';
+import { Header } from './Header';
+import { UIStore } from '../stores/UIStore';
+import { FocusQuestion } from './FocusQuestion/FocusQuestion';
+import { PomodoroTimer } from './PomodoroTimer/PomodoroTimer';
 
 interface IProps {
 	UIStore?: UIStore;
@@ -24,8 +24,8 @@ export class Home extends React.Component<IProps> {
 				<SettingsDialog />
 				<Container maxWidth={'sm'} sx={{ margin: '16pt auto' }}>
 					<Stack spacing={2}>
-						<PomodoroTimer />
 						<FocusQuestion />
+						<PomodoroTimer />
 					</Stack>
 				</Container>
 			</ThemeProvider>
