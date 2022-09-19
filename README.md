@@ -1,4 +1,5 @@
-# Getting Started with Create React App
+# The One Thing
+My application for a job @ Qberon.
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 This project used Google Material UI, MobX, ColorPicker and Giphy API.
