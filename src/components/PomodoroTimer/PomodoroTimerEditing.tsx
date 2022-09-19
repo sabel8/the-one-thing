@@ -1,6 +1,6 @@
 import React from 'react';
 import { inject, observer } from 'mobx-react';
-import { PomodoroTimerStore } from '../stores/PomodoroTimerStore';
+import { PomodoroTimerStore } from '../../stores/PomodoroTimerStore';
 import { CardActions, Fab, Stack, TextField } from '@mui/material';
 import DoneIcon from '@mui/icons-material/Done';
 

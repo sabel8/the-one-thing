@@ -1,6 +1,6 @@
 import React from 'react';
 import { inject, observer } from 'mobx-react';
-import { UIStore } from '../stores/UIStore';
+import { UIStore } from '../../stores/UIStore';
 import { ColorPicker } from './ColorPicker';
 import { Dialog, DialogTitle, Stack } from '@mui/material';
 import { FontPicker } from './FontPicker';

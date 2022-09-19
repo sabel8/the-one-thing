@@ -1,7 +1,7 @@
 import React from 'react';
 import { FormControl, InputLabel, MenuItem, Select, Typography } from '@mui/material';
 import { inject, observer } from 'mobx-react';
-import { UIStore } from '../stores/UIStore';
+import { UIStore } from '../../stores/UIStore';
 
 interface IProps {
 	UIStore?: UIStore;

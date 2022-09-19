@@ -2,7 +2,7 @@ import React from 'react';
 import { CirclePicker } from 'react-color';
 import { Paper, Typography } from '@mui/material';
 import { inject, observer } from 'mobx-react';
-import { UIStore } from '../stores/UIStore';
+import { UIStore } from '../../stores/UIStore';
 
 interface IProps {
 	UIStore?: UIStore;

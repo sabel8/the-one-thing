@@ -3,13 +3,13 @@ import Card from '@mui/material/Card';
 import Typography from '@mui/material/Typography';
 import CircularProgress, { circularProgressClasses } from '@mui/material/CircularProgress';
 import { inject, observer } from 'mobx-react';
-import { PomodoroTimerStore } from '../stores/PomodoroTimerStore';
+import { PomodoroTimerStore } from '../../stores/PomodoroTimerStore';
 import { Box, Fab, Grid, IconButton } from '@mui/material';
 import PlayIcon from '@mui/icons-material/PlayArrow';
 import PauseIcon from '@mui/icons-material/Pause';
 import { PomodoroTimerEditing } from './PomodoroTimerEditing';
 import EditIcon from '@mui/icons-material/Edit';
-import AudioService from '../services/AudioService';
+import AudioService from '../../services/AudioService';
 
 interface IProps {
 	PomodoroTimerStore?: PomodoroTimerStore;

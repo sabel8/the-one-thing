@@ -3,7 +3,7 @@ import Fab from '@mui/material/Fab';
 import { inject, observer } from 'mobx-react';
 import DoneIcon from '@mui/icons-material/Done';
 import { CardActions, TextField, Tooltip } from '@mui/material';
-import { FocusQuestionStore } from '../stores/FocusQuestionStore';
+import { FocusQuestionStore } from '../../stores/FocusQuestionStore';
 
 interface IProps {
 	FocusQuestionStore?: FocusQuestionStore;

@@ -1,7 +1,7 @@
 import React from 'react';
 import { inject, observer } from 'mobx-react';
 import { Box, Card, IconButton, Typography } from '@mui/material';
-import { FocusQuestionStore } from '../stores/FocusQuestionStore';
+import { FocusQuestionStore } from '../../stores/FocusQuestionStore';
 import { FocusQuestionEditing } from './FocusQuestionEditing';
 import EditIcon from '@mui/icons-material/Edit';
 
