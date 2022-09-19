@@ -1,20 +1,45 @@
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+This project used Google Material UI, MobX, ColorPicker and Giphy API.
+Chime sound from: [https://pixabay.com/sound-effects/search/chime/](https://pixabay.com/sound-effects/search/chime/).
 
-középen: focus question, timer
 
-alul settings gomb, megnyomására dialog ahol color picker és font picker van
 
-chime sound from: https://pixabay.com/sound-effects/search/chime/
+The app has 3 main components:
 
-work, short, work, short, work, long
+### Focus questions
+
+The user can set the first and the second part of their focus question.
+If the program finds the question saved in `localStorage` it will be loaded automatically.
+If editing is done, the values are saved in the `localStorage`.
+
+
+### Pomodoro timer
+
+The user can set the durantion of the working and resting times.
+If the program finds the minutes details saved in `localStorage` it will be loaded automatically.
+If editing is done, the values are saved in the `localStorage`.
+On every third Pomodoro cycles the resting time is the longer resting time.
+After setting the values, the timer can be started and paused with the button in the middle.
+The current state of the timer is saved in the `localStorage` including the seconds passed.
+If the timer is running a related random gif appears.
+
+### Settings
+
+Settings can be accessed by clicking on the cog icon in the top right corner.
+A dialog will popup where you can set the theme color and the font.
+These settings are stored in the `localStorage`.
+
+
 
 ## Available Scripts
 
 In the project directory, you can run:
 
 ### `npm start`
+
+Before runnung the command for the first time, run `npm install` first to install depencies.
 
 Runs the app in the development mode.
 Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
@@ -31,19 +56,3 @@ The build is minified and the filenames include the hashes.
 Your app is ready to be deployed!
 
 See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
