@@ -1,22 +1,21 @@
 import React from 'react';
 import Fab from '@mui/material/Fab';
 import { inject, observer } from 'mobx-react';
-import { MainStore } from '../stores/MainStore';
 import DoneIcon from '@mui/icons-material/Done';
 import { CardActions, TextField, Tooltip } from '@mui/material';
 import { FocusQuestionStore } from '../stores/FocusQuestionStore';
 
 interface IProps {
-	MainStore?: MainStore;
+	FocusQuestionStore?: FocusQuestionStore;
 }
 
-@inject('MainStore')
+@inject('FocusQuestionStore')
 @observer
 export class FocusQuestionEditing extends React.Component<IProps> {
 	focusQuestionStore: FocusQuestionStore;
 	constructor(props: IProps) {
 		super(props);
-		this.focusQuestionStore = props.MainStore!.focusQuestionStore;
+		this.focusQuestionStore = props.FocusQuestionStore!;
 	}
 	render() {
 		return (

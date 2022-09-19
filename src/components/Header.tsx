@@ -1,14 +1,14 @@
 import React from 'react';
 import { AppBar, Toolbar, Typography, IconButton } from '@mui/material';
 import SettingsIcon from '@mui/icons-material/Settings';
-import { MainStore } from '../stores/MainStore';
+import { UIStore } from '../stores/UIStore';
 import { inject, observer } from 'mobx-react';
 
 interface IProps {
-	MainStore?: MainStore;
+	UIStore?: UIStore;
 }
 
-@inject('MainStore')
+@inject('UIStore')
 @observer
 export class Header extends React.Component<IProps> {
 	render() {
@@ -20,7 +20,7 @@ export class Header extends React.Component<IProps> {
 					</Typography>
 					<IconButton
 						color="inherit"
-						onClick={() => this.props.MainStore?.uiStore.setSettingsDialogVisibility(true)}
+						onClick={() => this.props.UIStore!.setSettingsDialogVisibility(true)}
 					>
 						<SettingsIcon />
 					</IconButton>

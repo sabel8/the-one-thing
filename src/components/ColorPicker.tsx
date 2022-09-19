@@ -2,25 +2,22 @@ import React from 'react';
 import { CirclePicker } from 'react-color';
 import { Paper, Typography } from '@mui/material';
 import { inject, observer } from 'mobx-react';
-import { MainStore } from '../stores/MainStore';
+import { UIStore } from '../stores/UIStore';
 
 interface IProps {
-	MainStore?: MainStore;
+	UIStore?: UIStore;
 }
-interface IState {}
 
-@inject('MainStore')
+@inject('UIStore')
 @observer
-export class ColorPicker extends React.Component<IProps, IState> {
+export class ColorPicker extends React.Component<IProps> {
 	render() {
 		return (
 			<Paper variant="outlined" sx={{ padding: 2 }}>
 				<Typography variant="subtitle1" sx={{ marginBottom: 2 }}>
 					Color
 				</Typography>
-				<CirclePicker
-					onChange={(color) => this.props.MainStore?.uiStore.setPrimaryColor(color.hex)}
-				/>
+				<CirclePicker onChange={(color) => this.props.UIStore!.setPrimaryColor(color.hex)} />
 			</Paper>
 		);
 	}

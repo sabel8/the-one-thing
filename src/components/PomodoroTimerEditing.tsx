@@ -1,21 +1,20 @@
 import React from 'react';
-import { MainStore } from '../stores/MainStore';
 import { inject, observer } from 'mobx-react';
 import { PomodoroTimerStore } from '../stores/PomodoroTimerStore';
 import { CardActions, Fab, Stack, TextField } from '@mui/material';
 import DoneIcon from '@mui/icons-material/Done';
 
 interface IProps {
-	MainStore?: MainStore;
+	PomodoroTimerStore?: PomodoroTimerStore;
 }
 
-@inject('MainStore')
+@inject('PomodoroTimerStore')
 @observer
 export class PomodoroTimerEditing extends React.Component<IProps> {
 	private pomodoroTimerStore: PomodoroTimerStore;
 	constructor(props: IProps) {
 		super(props);
-		this.pomodoroTimerStore = props.MainStore!.pomodoroTimerStore;
+		this.pomodoroTimerStore = props.PomodoroTimerStore!;
 	}
 
 	render() {
@@ -26,7 +25,6 @@ export class PomodoroTimerEditing extends React.Component<IProps> {
 						label="Working minutes"
 						type={'number'}
 						value={this.pomodoroTimerStore.workingMinutes}
-						
 						onChange={(e) => this.pomodoroTimerStore.setWorkingMinutes(+e.target.value)}
 					/>
 					<TextField

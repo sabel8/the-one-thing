@@ -1,10 +1,14 @@
 import React from 'react';
 import { Provider } from 'mobx-react';
-import { MainStore } from './stores/MainStore';
 import { Home } from './Home';
+import { PomodoroTimerStore } from './stores/PomodoroTimerStore';
+import { FocusQuestionStore } from './stores/FocusQuestionStore';
+import { UIStore } from './stores/UIStore';
 
 interface IStores {
-	MainStore: MainStore;
+	PomodoroTimerStore: PomodoroTimerStore;
+	UIStore: UIStore;
+	FocusQuestionStore: FocusQuestionStore;
 }
 
 class App extends React.Component {
@@ -14,7 +18,9 @@ class App extends React.Component {
 		super(props);
 
 		this.stores = {
-			MainStore: new MainStore(),
+			PomodoroTimerStore: new PomodoroTimerStore(),
+			UIStore: new UIStore(),
+			FocusQuestionStore: new FocusQuestionStore(),
 		};
 	}
 

@@ -2,7 +2,6 @@ import React from 'react';
 import Card from '@mui/material/Card';
 import Typography from '@mui/material/Typography';
 import CircularProgress, { circularProgressClasses } from '@mui/material/CircularProgress';
-import { MainStore } from '../stores/MainStore';
 import { inject, observer } from 'mobx-react';
 import { PomodoroTimerStore } from '../stores/PomodoroTimerStore';
 import { Box, Fab, Grid, IconButton } from '@mui/material';
@@ -10,12 +9,13 @@ import PlayIcon from '@mui/icons-material/PlayArrow';
 import PauseIcon from '@mui/icons-material/Pause';
 import { PomodoroTimerEditing } from './PomodoroTimerEditing';
 import EditIcon from '@mui/icons-material/Edit';
+import AudioService from '../services/AudioService';
 
 interface IProps {
-	MainStore?: MainStore;
+	PomodoroTimerStore?: PomodoroTimerStore;
 }
 
-@inject('MainStore')
+@inject('PomodoroTimerStore')
 @observer
 export class PomodoroTimer extends React.Component<IProps> {
 	private WorkTimer: NodeJS.Timer | undefined;
@@ -23,7 +23,7 @@ export class PomodoroTimer extends React.Component<IProps> {
 	private pomodoroTimerStore: PomodoroTimerStore;
 	constructor(props: IProps) {
 		super(props);
-		this.pomodoroTimerStore = props.MainStore!.pomodoroTimerStore;
+		this.pomodoroTimerStore = props.PomodoroTimerStore!;
 	}
 
 	get currentTimer(): NodeJS.Timer | undefined {
@@ -47,7 +47,7 @@ export class PomodoroTimer extends React.Component<IProps> {
 	}
 
 	private switchMode() {
-		this.props.MainStore!.audioStore.playChime();
+		AudioService.playChime();
 		clearInterval(this.currentTimer);
 		this.pomodoroTimerStore.switchMode();
 	}

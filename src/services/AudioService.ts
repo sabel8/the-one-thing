@@ -1,6 +1,6 @@
 import CHIME from '../assets/chime-sound.mp3';
 
-export class AudioStore {
+class AudioService {
 	private chime: HTMLAudioElement;
 	constructor() {
 		this.chime = new Audio(CHIME);
@@ -10,3 +10,5 @@ export class AudioStore {
 		this.chime.play();
 	};
 }
+
+export default new AudioService();

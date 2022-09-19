@@ -1,23 +1,23 @@
 import Container from '@mui/material/Container';
 import React from 'react';
 import { inject, observer } from 'mobx-react';
-import { MainStore } from './stores/MainStore';
 import { Thing } from './components/Thing';
 import { SettingsDialog } from './components/SettingsDialog';
 import { ThemeProvider } from '@emotion/react';
 import { CssBaseline } from '@mui/material';
 import { Header } from './components/Header';
+import { UIStore } from './stores/UIStore';
 
 interface IProps {
-	MainStore?: MainStore;
+	UIStore?: UIStore;
 }
 
-@inject('MainStore')
+@inject('UIStore')
 @observer
 export class Home extends React.Component<IProps> {
 	render() {
 		return (
-			<ThemeProvider theme={this.props.MainStore!.uiStore.theme}>
+			<ThemeProvider theme={this.props.UIStore!.theme}>
 				<CssBaseline />
 				<Header />
 				<SettingsDialog />

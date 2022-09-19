@@ -1,18 +1,17 @@
 import React from 'react';
 import { FormControl, InputLabel, MenuItem, Select, Typography } from '@mui/material';
 import { inject, observer } from 'mobx-react';
-import { MainStore } from '../stores/MainStore';
+import { UIStore } from '../stores/UIStore';
 
 interface IProps {
-	MainStore?: MainStore;
+	UIStore?: UIStore;
 }
-interface IState {}
 
-@inject('MainStore')
+@inject('UIStore')
 @observer
-export class FontPicker extends React.Component<IProps, IState> {
+export class FontPicker extends React.Component<IProps> {
 	render() {
-		const { uiStore } = this.props.MainStore!;
+		const uiStore = this.props.UIStore!;
 		return (
 			<FormControl fullWidth>
 				<InputLabel>Font</InputLabel>
