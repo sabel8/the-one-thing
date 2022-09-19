@@ -20,15 +20,12 @@ export class UIStore {
 	get theme(): Theme {
 		return createTheme({
 			palette: {
-				primary: {
-					main: this.primaryColor,
-				},
-				background: {
-					default: lighten(this.primaryColor, 0.5),
-				},
+				primary: { main: this.primaryColor },
+				background: { default: lighten(this.primaryColor, 0.5) },
 			},
-			typography: {
-				fontFamily: this.fontFamily.join(','),
+			typography: { fontFamily: this.fontFamily.join(',') },
+			components: {
+				MuiCard: { styleOverrides: { root: { padding: '20pt 40pt' } } },
 			},
 		});
 	}

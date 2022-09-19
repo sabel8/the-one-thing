@@ -20,7 +20,7 @@ export class FocusQuestion extends React.Component<IProps> {
 	}
 	render() {
 		return (
-			<Card sx={{ padding: 5 }}>
+			<Card>
 				<Box sx={{ display: 'flex', justifyContent: 'space-between' }}>
 					<Typography variant="h5">Focus question</Typography>
 					{!this.focusQuestionStore.isEditing && (

@@ -2,7 +2,7 @@ import React from 'react';
 import { MainStore } from '../stores/MainStore';
 import { inject, observer } from 'mobx-react';
 import { PomodoroTimerStore } from '../stores/PomodoroTimerStore';
-import { CardActions, Fab, Stack, TextField, Typography } from '@mui/material';
+import { CardActions, Fab, Stack, TextField } from '@mui/material';
 import DoneIcon from '@mui/icons-material/Done';
 
 interface IProps {
@@ -22,7 +22,6 @@ export class PomodoroTimerEditing extends React.Component<IProps> {
 		return (
 			<>
 				<Stack spacing={2}>
-					<Typography variant="h5">Setup Pomodoro timer</Typography>
 					<TextField
 						label="Working minutes"
 						type={'number'}

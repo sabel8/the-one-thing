@@ -5,10 +5,11 @@ import CircularProgress, { circularProgressClasses } from '@mui/material/Circula
 import { MainStore } from '../stores/MainStore';
 import { inject, observer } from 'mobx-react';
 import { PomodoroTimerStore } from '../stores/PomodoroTimerStore';
-import { Box, Fab, Grid } from '@mui/material';
+import { Box, Fab, Grid, IconButton } from '@mui/material';
 import PlayIcon from '@mui/icons-material/PlayArrow';
 import PauseIcon from '@mui/icons-material/Pause';
 import { PomodoroTimerEditing } from './PomodoroTimerEditing';
+import EditIcon from '@mui/icons-material/Edit';
 
 interface IProps {
 	MainStore?: MainStore;
@@ -53,7 +54,15 @@ export class PomodoroTimer extends React.Component<IProps> {
 
 	render() {
 		return (
-			<Card sx={{ padding: 5 }}>
+			<Card>
+				<Box sx={{ display: 'flex', justifyContent: 'space-between', marginBottom: 2 }}>
+					<Typography variant="h5">Pomodoro timer</Typography>
+					{!this.pomodoroTimerStore.isEditing && (
+						<IconButton onClick={() => this.pomodoroTimerStore.setEditing(true)}>
+							<EditIcon />
+						</IconButton>
+					)}
+				</Box>
 				{this.pomodoroTimerStore.isEditing ? (
 					<PomodoroTimerEditing />
 				) : (
