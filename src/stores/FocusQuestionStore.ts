@@ -1,32 +1,26 @@
 import { makeAutoObservable } from 'mobx';
+import { makePersistable } from 'mobx-persist-store';
 import { IFocusQuestion } from '../models/IFocusQuestion';
 
-const FOCUS_QUESTION_CACHE_KEY: string = 'focusQuestion';
-
 export class FocusQuestionStore {
-	focusQuestion: IFocusQuestion;
-	isEditing: boolean;
+	focusQuestion: IFocusQuestion = { firstPart: '', secondPart: '' };
+	isEditing: boolean = true;
 
 	constructor() {
-		this.isEditing = !localStorage[FOCUS_QUESTION_CACHE_KEY];
-		this.focusQuestion = this.isEditing
-			? { firstPart: '', secondPart: '' }
-			: JSON.parse(localStorage[FOCUS_QUESTION_CACHE_KEY]);
 		makeAutoObservable(this);
+		makePersistable(this, {
+			name: 'FocusQuestionStore',
+			properties: ['focusQuestion', 'isEditing'],
+			storage: window.localStorage,
+		});
 	}
 
 	onChangeFocusQuestion(part: keyof IFocusQuestion, value: string) {
 		this.focusQuestion[part] = value;
 	}
 
-	submitEditing() {
-		this.isEditing = false;
-		localStorage[FOCUS_QUESTION_CACHE_KEY] = JSON.stringify(this.focusQuestion);
-	}
-
-	goEditing() {
-		this.isEditing = true;
-		localStorage.removeItem(FOCUS_QUESTION_CACHE_KEY);
+	setEditing(editing: boolean) {
+		this.isEditing = editing;
 	}
 
 	get focusQuestionReadonly(): string {

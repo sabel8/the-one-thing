@@ -23,7 +23,7 @@ export class FocusQuestion extends React.Component<IProps> {
 				<Box sx={{ display: 'flex', justifyContent: 'space-between' }}>
 					<Typography variant="h5">Focus question</Typography>
 					{!this.focusQuestionStore.isEditing && (
-						<IconButton onClick={() => this.focusQuestionStore.goEditing()}>
+						<IconButton onClick={() => this.focusQuestionStore.setEditing(true)}>
 							<EditIcon />
 						</IconButton>
 					)}

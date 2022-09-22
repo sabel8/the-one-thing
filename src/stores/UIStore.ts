@@ -1,20 +1,19 @@
 import { createTheme, lighten, Theme } from '@mui/material';
 import { makeAutoObservable } from 'mobx';
-
-const PRIMARY_COLOR_CACHE_KEY: string = 'primaryColor';
-const FONT_FAMILY_CACHE_KEY: string = 'fontFamily';
+import { makePersistable } from 'mobx-persist-store';
 
 export class UIStore {
 	showSettingsDialog: boolean = false;
-	primaryColor: string;
-	fontFamily: string[];
+	primaryColor: string = '#3f51b5';
+	fontFamily: string[] = ['Arial'];
 
 	constructor() {
-		this.primaryColor = localStorage[PRIMARY_COLOR_CACHE_KEY] || '#3f51b5';
-		this.fontFamily = localStorage[FONT_FAMILY_CACHE_KEY]
-			? JSON.parse(localStorage[FONT_FAMILY_CACHE_KEY])
-			: ['Arial'];
 		makeAutoObservable(this);
+		makePersistable(this, {
+			name: 'UIStore',
+			properties: ['primaryColor', 'fontFamily'],
+			storage: window.localStorage,
+		});
 	}
 
 	get theme(): Theme {
@@ -46,12 +45,10 @@ export class UIStore {
 
 	setPrimaryColor(color: string) {
 		this.primaryColor = color;
-		localStorage[PRIMARY_COLOR_CACHE_KEY] = color;
 	}
 
 	setFontFamily(fontFamily: string) {
 		this.fontFamily = [fontFamily];
-		localStorage[FONT_FAMILY_CACHE_KEY] = JSON.stringify(this.fontFamily);
 	}
 
 	setSettingsDialogVisibility = (SettingsDialog: boolean) => {

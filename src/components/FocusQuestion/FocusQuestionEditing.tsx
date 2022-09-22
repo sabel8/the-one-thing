@@ -47,7 +47,7 @@ export class FocusQuestionEditing extends React.Component<IProps> {
 					/>
 				</Tooltip>
 				<CardActions dir="rtl">
-					<Fab color="primary" onClick={() => this.focusQuestionStore.submitEditing()}>
+					<Fab color="primary" onClick={() => this.focusQuestionStore.setEditing(false)}>
 						<DoneIcon />
 					</Fab>
 				</CardActions>
